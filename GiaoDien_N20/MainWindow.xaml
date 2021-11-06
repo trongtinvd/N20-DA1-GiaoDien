@@ -1,0 +1,172 @@
+﻿<Window x:Class="GiaoDien_N20.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GiaoDien_N20"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" VerticalAlignment="Center">Connection String:</Label>
+            <TextBox Grid.Column="1" Name="ConnStrInput"/>
+            <Button Grid.Column="2" Name="ConnectBtn" Click="ConnectBtn_Click">Connect!</Button>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">KhachHang</Label>
+            <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">SanPham</Label>
+            <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">HoaDon</Label>
+            <Label Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center">CT_HoaDon</Label>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <ListView Name="KhachHangList">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="MaKH" Width="40" DisplayMemberBinding="{Binding Path=MaKH}" />
+                            <GridViewColumn Header="Ho" Width="65" DisplayMemberBinding="{Binding Path=Ho}" />
+                            <GridViewColumn Header="Ten" Width="65" DisplayMemberBinding="{Binding Path=Ten}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <ListView Name="SanPhamList">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="MaSP" Width="40" DisplayMemberBinding="{Binding Path=MaSp}" />
+                            <GridViewColumn Header="TenSP" Width="65" DisplayMemberBinding="{Binding Path=TenSP}" />
+                            <GridViewColumn Header="Gia" Width="65" DisplayMemberBinding="{Binding Path=Gia}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <ListView Name="HoaDonList">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="MaHD" Width="40" DisplayMemberBinding="{Binding Path=MaHD}" />
+                            <GridViewColumn Header="MaKH" Width="40" DisplayMemberBinding="{Binding Path=MaKH}" />
+                            <GridViewColumn Header="NgayLap" Width="80" DisplayMemberBinding="{Binding Path=NgayLap}" />
+                            <GridViewColumn Header="TongTien" Width="70" DisplayMemberBinding="{Binding Path=TongTien}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3">
+                <ListView Name="CTHoaDonList">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="MaHD" Width="50" DisplayMemberBinding="{Binding Path=MaHD}" />
+                            <GridViewColumn Header="MaSP" Width="50" DisplayMemberBinding="{Binding Path=MaSP}" />
+                            <GridViewColumn Header="SoLuong" Width="50" DisplayMemberBinding="{Binding Path=SoLuong}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">Thêm HoaDon</Label>
+                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">MaKH</Label>
+                <Label Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Ngày lập</Label>
+                <TextBox Grid.Row="2" Grid.Column="0" Name="MaKD"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Name="NgayLap"/>
+                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Name="ThemHoaDonBtn" Click="ThemHoaDonBtn_Click">Thêm HoaDon</Button>
+
+            </Grid>
+            
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">Thêm CT_HoaDon</Label>
+                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">MaHD</Label>
+                <Label Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">MaSP</Label>
+                <Label Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">SoLuong</Label>
+                <TextBox Grid.Row="2" Grid.Column="0" Name="MaHD"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Name="MaSP"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Name="SoLuong"/>
+                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Name="ThemCTHoaDon" Click="ThemCTHoaDon_Click">Thêm CT_HoaDon</Button>
+                
+            </Grid>
+            
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" HorizontalAlignment="Center">Doanh thu theo tháng</Label>
+                <Grid Grid.Row="1">
+                    <ListView Name="TongDoanhThuList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Tháng" Width="50" DisplayMemberBinding="{Binding Path=Thang}" />
+                                <GridViewColumn Header="Năm" Width="50" DisplayMemberBinding="{Binding Path=Nam}" />
+                                <GridViewColumn Header="Tổng doanh thu" Width="100" DisplayMemberBinding="{Binding Path=TongDoanhThu}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+                
+            </Grid>
+            
+        </Grid>
+        
+    </Grid>
+</Window>
